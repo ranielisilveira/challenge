@@ -22,3 +22,8 @@ Route::group(['prefix' => 'users'], function ($router) {
     Route::get('/', 'UserController@index');
     Route::post('/', 'UserController@store');
 });
+
+Route::group(['prefix' => 'accounts'], function ($router) {
+    Route::post('/', 'AccountController@store');
+    Route::get('/{id}', 'AccountController@show');
+});
