@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Enum\AccountTypes;
 use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
@@ -17,6 +18,8 @@ class Account extends Model
         'type',
     ];
 
+    protected $appends = ['typeName'];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -25,5 +28,10 @@ class Account extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class, 'account_id');
+    }
+
+    function getTypeNameAttribute()
+    {
+        return AccountTypes::TYPES[$this->type];
     }
 }

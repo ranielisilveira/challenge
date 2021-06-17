@@ -22,9 +22,9 @@ class AccountController extends Controller
                 'user'
             ])->findOrFail($id);
 
-            if ($account->type == AccountTypes::Company) {
-                $account->makeHidden(['user']);
-            } else {
+            if ($account->type == AccountTypes::Person) {
+                $account->name = $account->user->name;
+                $account->document = $account->user->document;
                 $account->makeHidden([
                     'corporate_name',
                     'trade_name',

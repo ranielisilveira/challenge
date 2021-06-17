@@ -27,3 +27,5 @@ Route::group(['prefix' => 'accounts'], function ($router) {
     Route::post('/', 'AccountController@store');
     Route::get('/{id}', 'AccountController@show');
 });
+
+Route::post('/transactions', 'TransactionController@store');
